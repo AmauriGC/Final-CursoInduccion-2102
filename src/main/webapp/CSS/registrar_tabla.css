@@ -1,0 +1,65 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #EEEEEE;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    color: #000000;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* No specific styles for this breakpoint needed */
+}
+
+@media (min-width: 62em) {
+    /* No specific styles for this breakpoint needed */
+}
+
+.bg-brown {
+    background-color: #4a90e2;
+}
+
+.colorF {
+    color: #000000;
+    font-weight: normal;
+    font-size: 1.25rem;
+}
+
+.colorW {
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.colorN {
+    color: #000000;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* BUTTONS */
+.bg-color-blue {
+    background-color: #4a90e2;
+    text-decoration: none;
+    color: #fff;
+    border-color: #4a90e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bg-color-blue:hover {
+    background-color: #2a5298;
+    text-decoration: none;
+    color: #fff;
+    border-color: #2a5298;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.2);
+}

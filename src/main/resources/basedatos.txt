@@ -1,0 +1,147 @@
+SHOW DATABASES;
+
+CREATE DATABASE curso_induccion;
+
+USE curso_induccion;
+
+CREATE TABLE ROL (
+    id_rol INT(1) PRIMARY KEY,
+    nombre VARCHAR(255),
+    descripcion VARCHAR(255)
+);
+INSERT INTO ROL VALUES
+(1, "Administrador", "Tiene mas herramientas que el docente"),
+(2, "Docente", "Esta limitado a hacer ciertas cosas");
+
+CREATE TABLE MATERIAS (
+    id_materia INT(2) PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    descripcion VARCHAR(255)
+);
+INSERT INTO MATERIAS (id_materia, nombre, descripcion) VALUES
+(1, "Calculo", "Aprender a manejar las ecuaciones"),
+(2, "Ingles", "Saber los conocimientos basicos de ingles"),
+(3, "Programacion", "Saber hacer lo basico de algunos lenguajes"),
+(4, "Fisica", "Estudio de las leyes del movimiento y la energía"),
+(5, "Quimica", "Estudio de la materia y sus propiedades");
+
+CREATE TABLE ASPIRANTES (
+    id_aspirante INT(5) PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    apellidos VARCHAR(255),
+    correo VARCHAR(255),
+    telefono VARCHAR(15),
+    curp VARCHAR(18),
+    calificacion int(5)
+);
+INSERT INTO ASPIRANTES (id_aspirante, nombre, apellidos, correo, telefono, curp, calificacion) VALUES
+(1, "eli", "trujillo", "eli@gmail.com", "7772544580", "elitrujillo", 0),
+(2, "pao", "trujillo", "pao@gmail.com", "7774577894", "paotrujillo", 0),
+(3, "juana", "trujillo", "juana@gmail.com", "7771264780", "juanatrujillo", 0),
+(4, "luis", "hernandez", "luis@gmail.com", "7776541230", "luishernandez", 0),
+(5, "maria", "lopez", "maria@gmail.com", "7779854321", "marialopez", 0);
+
+CREATE TABLE USUARIOS (
+    id_usuario INT(10) PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    apellidos VARCHAR(255),
+    correo VARCHAR(255),
+    contra VARCHAR(255),
+    telefono VARCHAR(15),
+    curp VARCHAR(18),
+    id_rol INT(1),
+    codigo VARCHAR(20),
+    FOREIGN KEY (id_rol) REFERENCES ROL(id_rol) ON DELETE CASCADE
+);
+INSERT INTO USUARIOS (nombre, apellidos, correo, contra, telefono, curp, id_rol) VALUES
+("cris", "gonzaga", "20233tn102@utez.edu.mx", SHA2('123', 256), "7772841623", "gocc050221hmsnsra0", 1),
+("amauri", "castañeda", "amauri@gmail.com", SHA2('123', 256), "7772841623", "gocc050221hmsnsra0", 2),
+("juan", "perez", "juan@gmail.com", SHA2('123', 256), "7771234567", "juanperezcurp", 2),
+("ana", "martinez", "ana@gmail.com", SHA2('123', 256), "7779876543", "anamartinezcurp", 2);
+
+CREATE TABLE MATERIAS_USUARIOS (
+    id_materia INT(2),
+    id_usuario INT(10),
+    nombre VARCHAR(255),
+    apellidos VARCHAR(255),
+    correo VARCHAR(255),
+    descripcion VARCHAR(255),
+    FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE
+);
+INSERT INTO MATERIAS_USUARIOS (id_materia, id_usuario, nombre, apellidos, correo, descripcion) VALUES
+(1, 2, "Amauri", "Castañeda", "amauri@gmail.com", "Materia que es impartida por el docente"),
+(2, 2, "Amauri", "Castañeda", "amauri@gmail.com", "Programación impartida por el docente"),
+(3, 3, "Juan", "Pérez", "juan@gmail.com", "Fisica impartida por el docente"),
+(4, 4, "Ana", "Martinez", "ana@gmail.com", "Quimica impartida por el docente");
+
+CREATE TABLE GRUPOS (
+    id_grupo INT(2) PRIMARY KEY AUTO_INCREMENT,
+    letra VARCHAR(5),
+    correo VARCHAR(255),
+    cantidad INT(2)
+);
+INSERT INTO GRUPOS (id_grupo, letra, correo, cantidad) VALUES
+(1, "A", "amauri@gmail.com", 25),
+(2, "B", "juan@gmail.com", 25),
+(3, "C", "ana@gmail.com", 25);
+
+CREATE TABLE GRUPO_ASPIRANTE (
+    id_grupo INT(2),
+    letra VARCHAR(5),
+    id_aspirante INT(5),
+    nombreA VARCHAR(255),
+    apellidosA VARCHAR(255),
+    correoA VARCHAR(255),
+    id_usuario INT(10),
+    nombreU VARCHAR(255),
+    apellidosU VARCHAR(255),
+    correoU VARCHAR(255),
+    id_materia INT(2),
+    nombreM VARCHAR(255),
+    FOREIGN KEY (id_grupo) REFERENCES GRUPOS(id_grupo) ON DELETE CASCADE,
+    FOREIGN KEY (id_aspirante) REFERENCES ASPIRANTES(id_aspirante) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia) ON DELETE CASCADE
+);
+INSERT INTO GRUPO_ASPIRANTE (id_grupo, letra, id_aspirante, nombreA, apellidosA, correoA, id_usuario, nombreU, apellidosU, correoU, id_materia, nombreM) VALUES
+(1, "A", 1, "eli", "trujillo", "eli@gmail.com", 4, "juan", "perez", "juan@gmail.com", 4, "Fisica"),
+(2, "B", 2, "pao", "trujillo", "pao@gmail.com", 2, "amauri", "castañeda", "amauri@gmail.com", 2, "Ingles"),
+(2, "B", 3, "juana", "fuentes", "juana@gmail.com", 3, "juan", "perez", "juan@gmail.com", 2, "Ingles"),
+(3, "C", 4, "luis", "hernandez", "luis@gmail.com", 2, "amauri", "castañeda", "amauri@gmail.com", 3, "Programacion"),
+(3, "C", 5, "maria", "lopez", "maria@gmail.com", 4, "juan", "perez", "juan@gmail.com", 4, "Fisica");
+
+CREATE TABLE CALIFICACIONES (
+    id_calificacion INT(2) PRIMARY KEY AUTO_INCREMENT,
+    id_materia INT(2),
+    nombreM VARCHAR(255),
+    id_grupo INT(2),
+    letra VARCHAR(5),
+    id_usuario INT(10),
+    nombreU VARCHAR(255),
+    apellidosU VARCHAR(255),
+    id_aspirante INT(5),
+    nombreA VARCHAR(255),
+    apellidosA VARCHAR(255),
+    calificacion DECIMAL(5, 2),
+    FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia) ON DELETE CASCADE,
+    FOREIGN KEY (id_grupo) REFERENCES GRUPOS(id_grupo) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_aspirante) REFERENCES ASPIRANTES(id_aspirante) ON DELETE CASCADE
+);
+INSERT INTO CALIFICACIONES (id_materia, nombreM, id_grupo, letra, id_usuario, nombreU, apellidosU, id_aspirante, nombreA, apellidosA, calificacion) VALUES
+(1, "Calculo", 1, "A", 4, "juan", "perez", 5, "maria", "lopez", 8),
+(2, "Ingles", 2, "B", 2, "amauri", "castañeda", 2, "pao", "trujillo", 9),
+(3, "Programacion", 2, "B", 2, "amauri", "castañeda", 4, "luis", "hernandez", 6),
+(4, "Fisica", 3, "C", 4, "juan", "perez", 5, "maria", "lopez", 4);
+
+SHOW TABLES;
+
+SELECT * FROM MATERIAS;
+SELECT * FROM ASPIRANTES;
+SELECT * FROM ROL;
+SELECT * FROM USUARIOS;
+SELECT * FROM MATERIAS_USUARIOS;
+SELECT * FROM GRUPOS;
+SELECT * FROM GRUPO_ASPIRANTE;
+SELECT * FROM CALIFICACIONES;
