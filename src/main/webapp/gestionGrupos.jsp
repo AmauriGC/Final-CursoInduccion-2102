@@ -104,6 +104,19 @@
 <script src="${pageContext.request.contextPath}/JS/jquery-3.7.0.js"></script>
 <script src="${pageContext.request.contextPath}/JS/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/JS/datatables.js"></script>
+<script src="${pageContext.request.contextPath}/JS/dataTables.bootstrap5.js"></script>
+<script src="${pageContext.request.contextPath}/JS/es-MX.json"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const table = document.getElementById('example');
+        new DataTable(table, {
+            language: {
+                url: '${pageContext.request.contextPath}/JS/es-MX.json'
+            }
+        });
+    });
+</script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
