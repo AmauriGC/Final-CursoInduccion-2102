@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/gestion_tabla.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/datatables.css">
 </head>
-<body style="font-family: 'Montserrat', sans-serif">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-brown">
@@ -53,6 +52,7 @@
     </nav>
 </header>
 
+<body style="font-family: 'Montserrat', sans-serif">
 <div class="tabla p-md-5 mx-md-4">
     <div class="align-content-center">
         <a href="administrador.jsp" class="btn btn-outline-danger salir">Salir</a>
