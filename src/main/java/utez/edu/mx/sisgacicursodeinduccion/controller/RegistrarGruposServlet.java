@@ -48,7 +48,6 @@ public class RegistrarGruposServlet extends HttpServlet {
         String operacion = request.getParameter("operacion");
         String idGrupo = request.getParameter("id_grupo");
         String letra = request.getParameter("letra");
-        String nombre = request.getParameter("nombre");
         String correo = request.getParameter("correo");
 
 
@@ -90,7 +89,6 @@ public class RegistrarGruposServlet extends HttpServlet {
             if (idGrupo != null && !idGrupo.trim().isEmpty()) {
                 try {
                     Grupo grupo = grupoDao.getById(Integer.parseInt(idGrupo));
-                    grupo.setNombre(nombre);
                     grupo.setCorreo(correo);
 
                     if (grupoDao.updateG(grupo)) {

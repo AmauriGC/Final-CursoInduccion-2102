@@ -106,12 +106,6 @@
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="text" name="nombre" class="form-control"
-                                               value="<%=g != null ? g.getNombre() : "" %>"
-                                               placeholder="Nombre del Docente" disabled/>
-                                    </div>
-
-                                    <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="email" name="correo" class="form-control"
                                                value="<%=g != null ? g.getCorreo() : "" %>"
                                                placeholder="Correo" />
