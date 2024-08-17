@@ -90,7 +90,7 @@
                     <form action="register" method="get">
                         <input type="hidden" name="operacion" value="actualizar">
                         <input type="hidden" name="id_grupo" value="<%=g.getId_grupo()%>">
-                        <button type="submit" class="btn btn-outline-primary">Asignar</button>
+                        <button type="submit" class="btn btn-outline-primary">Asignar docente</button>
                     </form>
                 </td>
             </tr>

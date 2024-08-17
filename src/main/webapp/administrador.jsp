@@ -51,7 +51,7 @@
 
 <br><br><br>
 
-<main role="main">
+<main ro<main role="main">
 
     <div class="container marketing">
 
@@ -60,41 +60,32 @@
                 <h2>Registrar</h2>
             </div>
 
-            <div class="col-lg-4">
-                <div class="pastel-blue contenedor">
+            <div class="col-lg-4 offset-lg-2"> <!-- Aquí añadimos offset-lg-2 -->
+                <div class="pastel-blue contenedor text-center">
                     <img class="" src="img/registrarUsuario.png" alt="usuario image" width="90" height="90">
                     <h2>Usuarios</h2>
-                    <p>En este apartado se daran de alta a los usuarios que podran acceder a la pagina del sistema.</p>
+                    <p>En este apartado se daran de alta a los usuarios que podran acceder a la página del sistema.</p>
                     <p><a class="btn bg-color-blue" href="registrarUsuario.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="pastel-pink contenedor">
+                <div class="pastel-pink contenedor text-center">
                     <img class="" src="img/registrarAspirante.png" alt="aspirante image" width="90" height="90">
                     <h2>Aspirantes</h2>
                     <p>En este apartado se daran de alta a los aspirantes que inician el curso de induccion.</p>
                     <p><a class="btn bg-color-blue" href="registrarAspirante.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
+        </div>
 
-            <!--
-            <div class="col-lg-4 ">
-                <div class="pastel-purple contenedor">
-                    <img class="" src="img/registrarGrupo.png" alt="grupos image" width="90" height="90">
-                    <h2>Grupos</h2>
-                    <p>En este apartado se daran de alta a los grupos que estan conformados por los aspirantes.</p>
-                    <p><a class="btn bg-color-blue" href="registrarGrupos.jsp" role="button">Entrar &raquo;</a></p>
-                </div>
-            </div>
-            -->
-
+        <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>Gestionar</h2>
             </div>
 
-            <div class="col-lg-4 ">
-                <div class="pastel-yellow contenedor">
+            <div class="col-lg-4">
+                <div class="pastel-yellow contenedor text-center">
                     <img class="" src="img/gestionarUsuario.png" alt="usuario image" width="90" height="90">
                     <h2>Usuarios</h2>
                     <p>En este apartado podran ver los detalles de los usuarios dados de alta en el sistema.</p>
@@ -102,8 +93,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 ">
-                <div class="pastel-green contenedor">
+            <div class="col-lg-4">
+                <div class="pastel-green contenedor text-center">
                     <img class="" src="img/gestionarAspirante.png" alt="aspirante image" width="90"
                          height="90">
                     <h2>Aspirantes</h2>
@@ -112,11 +103,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 ">
-                <div class="pastel-orange contenedor">
+            <div class="col-lg-4">
+                <div class="pastel-orange contenedor text-center">
                     <img class="" src="img/gestionarGrupo.png" alt="grupos image" width="90" height="90">
                     <h2>Grupos</h2>
-                    <p>En este apartado podran ver a todos los grupos que existen en el curso.</p>
+                    <p>En este apartado podran ver a todos los grupos que existen en el curso de induccion.</p>
                     <p><a class="btn bg-color-blue" href="gestionGrupos.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
@@ -124,6 +115,7 @@
         </div>
     </div>
 </main>
+
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
