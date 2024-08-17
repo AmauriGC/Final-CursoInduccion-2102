@@ -78,38 +78,29 @@ INSERT INTO MATERIAS_USUARIOS (id_materia, id_usuario, nombre, apellidos, correo
 CREATE TABLE GRUPOS (
     id_grupo INT(2) PRIMARY KEY AUTO_INCREMENT,
     letra VARCHAR(5),
+    nombre VARCHAR(255),
     correo VARCHAR(255),
     cantidad INT(2)
 );
-INSERT INTO GRUPOS (id_grupo, letra, correo, cantidad) VALUES
-(1, "A", "amauri@gmail.com", 25),
-(2, "B", "juan@gmail.com", 25),
-(3, "C", "ana@gmail.com", 25);
+INSERT INTO GRUPOS (id_grupo, letra, nombre, correo, cantidad) VALUES
+(1, "A", "amauri","amauri@gmail.com", 0),
+(2, "B", "juan","juan@gmail.com", 0),
+(3, "C", "ana","ana@gmail.com", 0);
 
 CREATE TABLE GRUPO_ASPIRANTE (
     id_grupo INT(2),
     letra VARCHAR(5),
-    id_aspirante INT(5),
     nombreA VARCHAR(255),
     apellidosA VARCHAR(255),
     correoA VARCHAR(255),
-    id_usuario INT(10),
-    nombreU VARCHAR(255),
-    apellidosU VARCHAR(255),
-    correoU VARCHAR(255),
-    id_materia INT(2),
-    nombreM VARCHAR(255),
-    FOREIGN KEY (id_grupo) REFERENCES GRUPOS(id_grupo) ON DELETE CASCADE,
-    FOREIGN KEY (id_aspirante) REFERENCES ASPIRANTES(id_aspirante) ON DELETE CASCADE,
-    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE,
-    FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia) ON DELETE CASCADE
+    FOREIGN KEY (id_grupo) REFERENCES GRUPOS(id_grupo) ON DELETE CASCADE
 );
-INSERT INTO GRUPO_ASPIRANTE (id_grupo, letra, id_aspirante, nombreA, apellidosA, correoA, id_usuario, nombreU, apellidosU, correoU, id_materia, nombreM) VALUES
-(1, "A", 1, "eli", "trujillo", "eli@gmail.com", 4, "juan", "perez", "juan@gmail.com", 4, "Fisica"),
-(2, "B", 2, "pao", "trujillo", "pao@gmail.com", 2, "amauri", "castañeda", "amauri@gmail.com", 2, "Ingles"),
-(2, "B", 3, "juana", "fuentes", "juana@gmail.com", 3, "juan", "perez", "juan@gmail.com", 2, "Ingles"),
-(3, "C", 4, "luis", "hernandez", "luis@gmail.com", 2, "amauri", "castañeda", "amauri@gmail.com", 3, "Programacion"),
-(3, "C", 5, "maria", "lopez", "maria@gmail.com", 4, "juan", "perez", "juan@gmail.com", 4, "Fisica");
+INSERT INTO GRUPO_ASPIRANTE (id_grupo, letra, nombreA, apellidosA, correoA) VALUES
+(1, "A", "eli", "trujillo", "eli@gmail.com"),
+(2, "B", "pao", "trujillo", "pao@gmail.com"),
+(2, "B", "juana", "fuentes", "juana@gmail.com"),
+(3, "C", "luis", "hernandez", "luis@gmail.com"),
+(3, "C", "maria", "lopez", "maria@gmail.com");
 
 CREATE TABLE CALIFICACIONES (
     id_calificacion INT(2) PRIMARY KEY AUTO_INCREMENT,

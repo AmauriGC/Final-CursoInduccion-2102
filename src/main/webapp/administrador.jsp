@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 ">
+            <div class="col-lg-4">
                 <div class="pastel-pink contenedor">
                     <img class="" src="img/registrarAspirante.png" alt="aspirante image" width="90" height="90">
                     <h2>Aspirantes</h2>
@@ -78,6 +78,7 @@
                 </div>
             </div>
 
+            <!--
             <div class="col-lg-4 ">
                 <div class="pastel-purple contenedor">
                     <img class="" src="img/registrarGrupo.png" alt="grupos image" width="90" height="90">
@@ -86,6 +87,7 @@
                     <p><a class="btn bg-color-blue" href="registrarGrupos.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
+            -->
 
             <div class="col-lg-12 text-center">
                 <h2>Gestionar</h2>
@@ -114,10 +116,11 @@
                 <div class="pastel-orange contenedor">
                     <img class="" src="img/gestionarGrupo.png" alt="grupos image" width="90" height="90">
                     <h2>Grupos</h2>
-                    <p>En este apartado podran ver a todos los grupos que existen en el curso de induccion.</p>
+                    <p>En este apartado podran ver a todos los grupos que existen en el curso.</p>
                     <p><a class="btn bg-color-blue" href="gestionGrupos.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
+
         </div>
     </div>
 </main>

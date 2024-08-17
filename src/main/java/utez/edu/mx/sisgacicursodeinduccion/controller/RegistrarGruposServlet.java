@@ -48,37 +48,13 @@ public class RegistrarGruposServlet extends HttpServlet {
         String operacion = request.getParameter("operacion");
         String idGrupo = request.getParameter("id_grupo");
         String letra = request.getParameter("letra");
+        String nombre = request.getParameter("nombre");
         String correo = request.getParameter("correo");
+
 
         GrupoDao grupoDao = new GrupoDao();
         UsuarioDao usuarioDao = new UsuarioDao();
         HttpSession sesion = request.getSession();
-
-        // Validar el correo electrónico
-        if (correo == null || correo.trim().isEmpty() || !correo.matches("^[\\w-_.+]+@[\\w-]+\\.[a-zA-Z]{2,6}$")) {
-            sesion.setAttribute("mensaje", "El correo electrónico no es válido.");
-            sesion.setAttribute("operacion", operacion);
-            if ("actualizar".equals(operacion)) {
-                if (idGrupo != null && !idGrupo.trim().isEmpty()) {
-                    sesion.setAttribute("grupo", grupoDao.getById(Integer.parseInt(idGrupo))); // Mantener datos en la sesión
-                }
-            }
-            response.sendRedirect("registrarGrupos.jsp");
-            return;
-        }
-
-        // Verificar si el correo del docente existe
-        if (!usuarioDao.existsByCorreo(correo)) {
-            sesion.setAttribute("mensaje", "El correo del docente no está registrado.");
-            sesion.setAttribute("operacion", operacion);
-            if ("actualizar".equals(operacion)) {
-                if (idGrupo != null && !idGrupo.trim().isEmpty()) {
-                    sesion.setAttribute("grupo", grupoDao.getById(Integer.parseInt(idGrupo))); // Mantener datos en la sesión
-                }
-            }
-            response.sendRedirect("registrarGrupos.jsp");
-            return;
-        }
 
         // Validar letra
         if ("registrar".equals(operacion)) {
@@ -102,9 +78,8 @@ public class RegistrarGruposServlet extends HttpServlet {
         if ("registrar".equals(operacion)) {
             Grupo grupo = new Grupo();
             grupo.setLetra(letra);
-            grupo.setCorreo(correo);
 
-            if (grupoDao.save(grupo)) {
+            if (grupoDao.insertG(grupo)) {
                 response.sendRedirect("gestionGrupos.jsp");
             } else {
                 sesion.setAttribute("mensaje", "Error al registrar el grupo.");
@@ -115,9 +90,10 @@ public class RegistrarGruposServlet extends HttpServlet {
             if (idGrupo != null && !idGrupo.trim().isEmpty()) {
                 try {
                     Grupo grupo = grupoDao.getById(Integer.parseInt(idGrupo));
+                    grupo.setNombre(nombre);
                     grupo.setCorreo(correo);
 
-                    if (grupoDao.update(grupo)) {
+                    if (grupoDao.updateG(grupo)) {
                         response.sendRedirect("gestionGrupos.jsp");
                     } else {
                         sesion.setAttribute("mensaje", "Error al actualizar el grupo.");

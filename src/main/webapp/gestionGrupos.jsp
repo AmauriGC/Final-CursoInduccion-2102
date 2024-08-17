@@ -55,15 +55,18 @@
 <body style="font-family: 'Montserrat', sans-serif">
 <div class="tabla p-md-5 mx-md-4">
     <a href="administrador.jsp" class="btn btn-outline-danger salir">Salir</a>
+    <a class="btn bg-color-blue" href="registrarGrupos.jsp" role="button">Registrar Grupo</a>
+
     <div class="table-container">
         <table id="example" class="table table-striped table-hover" style="width:100%">
             <thead style="background-color: #4A90E2; color: white;">
             <tr>
                 <th>Grupo</th>
                 <th>Letra</th>
-                <th>Docente</th>
+                <th>Nombre del docente</th>
+                <th>Correo del Docente</th>
                 <th>Cantidad</th>
-                <th>Acción</th>
+                <th>...</th>
             </tr>
             </thead>
             <tbody>
@@ -77,6 +80,8 @@
                 </td>
                 <td><%=g.getLetra()%>
                 </td>
+                <td><%=g.getNombre()%>
+                </td>
                 <td><%=g.getCorreo()%>
                 </td>
                 <td><%=g.getCantidad()%>
@@ -85,7 +90,7 @@
                     <form action="register" method="get">
                         <input type="hidden" name="operacion" value="actualizar">
                         <input type="hidden" name="id_grupo" value="<%=g.getId_grupo()%>">
-                        <button type="submit" class="btn btn-outline-primary">Cambiar</button>
+                        <button type="submit" class="btn btn-outline-primary">Asignar</button>
                     </form>
                 </td>
             </tr>

@@ -11,16 +11,9 @@
         function validarFormulario() {
             var form = document.forms["grupoForm"];
             var letra = form["letra"] ? form["letra"].value.toUpperCase() : '';
-            var correo = form["correo"].value;
 
             // Convertir letra a mayúscula
             form["letra"].value = letra;
-
-            // Validar campos requeridos
-            if (correo === "") {
-                alert("El correo debe ser llenado");
-                return false;
-            }
 
             // Validar letra (solo en registro)
             if (form["operacion"].value === "registrar") {
@@ -29,14 +22,6 @@
                     return false;
                 }
             }
-
-            // Validar formato del correo electrónico
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(correo)) {
-                alert("El correo electrónico no es válido");
-                return false;
-            }
-
             return true;
         }
     </script>
@@ -91,10 +76,6 @@
                                         <input type="text" name="letra" class="form-control" placeholder="Letra"/>
                                     </div>
 
-                                    <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="email" name="correo" class="form-control" placeholder="Correo"/>
-                                    </div>
-
                                     <!-- Mostrar Mensajes de Error -->
                                     <% if (sesion.getAttribute("mensaje") != null) { %>
                                     <div class="alert alert-danger">
@@ -121,13 +102,19 @@
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="text" name="letra" class="form-control"
                                                value="<%=g != null ? g.getLetra() : "" %>"
-                                               placeholder="Letra" disabled/>
+                                               placeholder="Letra del Grupo" disabled/>
+                                    </div>
+
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="text" name="nombre" class="form-control"
+                                               value="<%=g != null ? g.getNombre() : "" %>"
+                                               placeholder="Nombre del Docente" />
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="email" name="correo" class="form-control"
                                                value="<%=g != null ? g.getCorreo() : "" %>"
-                                               placeholder="Correo"/>
+                                               placeholder="Correo" />
                                     </div>
 
                                     <!-- Mostrar Mensajes de Error -->

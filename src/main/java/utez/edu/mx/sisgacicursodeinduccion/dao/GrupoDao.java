@@ -22,6 +22,7 @@ public class GrupoDao {
             if (rs.next()) {
                 g.setId_grupo(rs.getInt("id_grupo"));
                 g.setLetra(rs.getString("letra"));
+                g.setNombre(rs.getString("nombre"));
                 g.setCorreo(rs.getString("correo")); // Nuevo campo
                 g.setCantidad(rs.getInt("cantidad"));
             }
@@ -32,20 +33,6 @@ public class GrupoDao {
             e.printStackTrace();
         }
         return g;
-    }
-
-    // Actualizar la información de un grupo
-    public boolean update(Grupo g) {
-        String query = "UPDATE grupos SET correo = ? WHERE id_grupo = ?";
-        try (Connection con = DatabaseConnectionManager.getConnection();
-             PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, g.getCorreo());
-            ps.setInt(2, g.getId_grupo());
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     // Obtener todos los grupos
@@ -59,6 +46,7 @@ public class GrupoDao {
                 Grupo g = new Grupo();
                 g.setId_grupo(rs.getInt("id_grupo"));
                 g.setLetra(rs.getString("letra"));
+                g.setNombre(rs.getString("nombre"));
                 g.setCorreo(rs.getString("correo"));
                 g.setCantidad(rs.getInt("cantidad"));
                 lista.add(g);
@@ -73,13 +61,27 @@ public class GrupoDao {
     }
 
     // Guardar un nuevo grupo en la base de datos
-    public boolean save(Grupo grupo) {
-        String query = "INSERT INTO grupos (letra, correo, cantidad) VALUES (?, ?, 25)";
+    public boolean insertG(Grupo grupo) {
+        String query = "INSERT INTO grupos (letra, cantidad) VALUES (?, 0)";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, grupo.getLetra());
-            ps.setString(2, grupo.getCorreo());
             return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Actualizar la información de un grupo
+    public boolean updateG(Grupo g) {
+        String query = "update grupos set nombre = ?, correo = ? where id_grupo = ?";
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, g.getNombre());
+            ps.setString(2, g.getCorreo());
+            ps.setInt(3, g.getId_grupo());
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,6 +100,7 @@ public class GrupoDao {
                     g = new Grupo();
                     g.setId_grupo(rs.getInt("id_grupo"));
                     g.setLetra(rs.getString("letra"));
+                    g.setNombre(rs.getString("nombre"));
                     g.setCorreo(rs.getString("correo"));
                     g.setCantidad(rs.getInt("cantidad"));
                 }
