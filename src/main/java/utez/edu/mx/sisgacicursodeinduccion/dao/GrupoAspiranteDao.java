@@ -40,7 +40,7 @@ public class GrupoAspiranteDao {
     // Obtener todos los GrupoAspirante para un id_grupo específico
     public ArrayList<GrupoAspirante> getAspirantesPorGrupo(int id_grupo) {
         ArrayList<GrupoAspirante> lista = new ArrayList<>();
-        String query = "SELECT GA.id_grupo, GA.nombreA, GA.apellidosA, GA.correoA, G.letra FROM GRUPO_ASPIRANTE GA JOIN GRUPOS G ON GA.id_grupo = G.id_grupo WHERE G.id_grupo = ?";
+        String query = "SELECT GA.id_grupo, GA.nombreA, GA.apellidosA, GA.correoA, G.letra FROM grupo_aspirante GA JOIN grupos G ON GA.id_grupo = G.id_grupo WHERE G.id_grupo = ?";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, id_grupo);
