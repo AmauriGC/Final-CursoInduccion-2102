@@ -51,7 +51,7 @@
     <a href="docente.jsp" class="btn btn-outline-danger">Salir</a>
     <div class="table-container">
         <table id="example" class="table table-striped table-hover" style="width:100%">
-            <thead>
+            <thead style="background-color: #4A90E2; color: white;">
             <tr>
                 <th>FOLIO</th>
                 <th>NOMBRE</th>

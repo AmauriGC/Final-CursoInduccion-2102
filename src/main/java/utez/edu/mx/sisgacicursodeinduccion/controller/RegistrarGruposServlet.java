@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import utez.edu.mx.sisgacicursodeinduccion.dao.GrupoDao;
 import utez.edu.mx.sisgacicursodeinduccion.dao.UsuarioDao;
 import utez.edu.mx.sisgacicursodeinduccion.model.Grupo;
+import utez.edu.mx.sisgacicursodeinduccion.model.Usuario;
 
 import java.io.IOException;
 
@@ -50,7 +51,6 @@ public class RegistrarGruposServlet extends HttpServlet {
         String letra = request.getParameter("letra");
         String correo = request.getParameter("correo");
 
-
         GrupoDao grupoDao = new GrupoDao();
         UsuarioDao usuarioDao = new UsuarioDao();
         HttpSession sesion = request.getSession();
@@ -89,12 +89,25 @@ public class RegistrarGruposServlet extends HttpServlet {
             if (idGrupo != null && !idGrupo.trim().isEmpty()) {
                 try {
                     Grupo grupo = grupoDao.getById(Integer.parseInt(idGrupo));
-                    grupo.setCorreo(correo);
 
-                    if (grupoDao.updateG(grupo)) {
-                        response.sendRedirect("gestionGrupos.jsp");
+                    // Obtener el nombre del docente basado en el correo
+                    Usuario usuario = usuarioDao.getByCorreo(correo);
+                    if (usuario != null) {
+                        String nombre = usuario.getNombre();
+
+                        // Actualizar el grupo con el correo y el nombre del docente
+                        grupo.setCorreo(correo);
+                        grupo.setNombre(nombre);
+
+                        if (grupoDao.updateG(grupo)) {
+                            response.sendRedirect("gestionGrupos.jsp");
+                        } else {
+                            sesion.setAttribute("mensaje", "Error al actualizar el grupo.");
+                            sesion.setAttribute("operacion", "actualizar");
+                            response.sendRedirect("registrarGrupos.jsp");
+                        }
                     } else {
-                        sesion.setAttribute("mensaje", "Error al actualizar el grupo.");
+                        sesion.setAttribute("mensaje", "No se encontró un usuario con ese correo.");
                         sesion.setAttribute("operacion", "actualizar");
                         response.sendRedirect("registrarGrupos.jsp");
                     }
@@ -110,4 +123,5 @@ public class RegistrarGruposServlet extends HttpServlet {
             }
         }
     }
+
 }

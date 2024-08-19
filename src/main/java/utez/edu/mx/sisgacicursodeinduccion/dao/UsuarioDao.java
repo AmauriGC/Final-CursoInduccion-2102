@@ -391,4 +391,25 @@ public class UsuarioDao {
         return u;
     }
 
+    public Usuario getByCorreo(String correo) {
+        Usuario usuario = null;
+        String query = "SELECT * FROM usuarios WHERE correo = ?";
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, correo);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new Usuario();
+                    usuario.setId_usuario(rs.getInt("id_usuario"));
+                    usuario.setNombre(rs.getString("nombre"));
+                    usuario.setCorreo(rs.getString("correo"));
+                    // Otros campos según tu modelo
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuario;
+    }
+
 }

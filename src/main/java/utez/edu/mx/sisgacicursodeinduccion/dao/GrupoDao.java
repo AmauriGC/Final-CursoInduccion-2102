@@ -63,11 +63,12 @@ public class GrupoDao {
 
     // Guardar un nuevo grupo en la base de datos
     public boolean insertG(Grupo grupo) {
-        String query = "INSERT INTO grupos (letra, correo, cantidad) VALUES (?, ?, 0)";
+        String query = "INSERT INTO grupos (letra, nombre,correo, cantidad) VALUES (?, ?,?, 0)";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, grupo.getLetra());
-            ps.setString(2, grupo.getCorreo());
+            ps.setString(2, grupo.getNombre());
+            ps.setString(3, grupo.getCorreo());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,11 +78,12 @@ public class GrupoDao {
 
     // Actualizar la información de un grupo
     public boolean updateG(Grupo g) {
-        String query = "UPDATE grupos SET correo = ? WHERE id_grupo = ?";
+        String query = "UPDATE grupos SET correo = ?, nombre = ? WHERE id_grupo = ?";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, g.getCorreo());
-            ps.setInt(2, g.getId_grupo());
+            ps.setString(2, g.getNombre()); // Añadir la actualización del nombre
+            ps.setInt(3, g.getId_grupo());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

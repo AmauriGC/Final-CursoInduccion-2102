@@ -102,7 +102,8 @@
                                       onsubmit="return validarFormulario()">
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="text" name="letra" class="form-control" placeholder="Letra"/>
+                                        <input type="text" name="letra" class="form-control"
+                                               placeholder="Letra del Grupo"/>
                                     </div>
 
                                     <!-- Mostrar Mensajes de Error -->
@@ -149,12 +150,20 @@
                                                     String correo = u.getCorreo();
                                                     boolean isSelected = (g != null && g.getCorreo() != null && g.getCorreo().equals(correo));
                                             %>
-                                            <option value="<%= correo %>" <%= isSelected ? "selected" : "" %>><%= correo %></option>
+                                            <option value="<%= correo %>" <%= isSelected ? "selected" : "" %>><%= correo %>
+                                            </option>
                                             <%
                                                 }
                                             %>
                                         </select>
                                     </div>
+
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="text" name="nombre" id="nombre" placeholder="Nombre del Docente"
+                                               class="form-control" value="<%=g != null ? g.getNombre() : "" %>"
+                                               disabled/>
+                                    </div>
+
 
                                     <!-- Mostrar Mensajes de Error -->
                                     <% if (sesion.getAttribute("mensaje") != null) { %>
@@ -175,6 +184,25 @@
                                         <a href="gestionGrupos.jsp" class="btn btn-outline-danger none">Salir</a>
                                     </div>
                                 </form>
+
+                                <script>
+                                    const correosNombres = {
+                                        <% for (Usuario u : lista) { %>
+                                        "<%= u.getCorreo() %>": "<%= u.getNombre() %>",
+                                        <% } %>
+                                    };
+
+                                    function actualizarNombre() {
+                                        const correoSeleccionado = document.getElementById("correo").value;
+                                        const nombre = correosNombres[correoSeleccionado] || "";
+                                        document.getElementById("nombre").value = nombre;
+                                    }
+
+                                    document.getElementById("correo").addEventListener("change", actualizarNombre);
+
+                                    // Llama a la función por si ya hay un correo seleccionado al cargar la página
+                                    actualizarNombre();
+                                </script>
 
                                 <% } %>
 
