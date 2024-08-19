@@ -43,7 +43,7 @@
                     </div>
                 </li>
             </ul>
-            <a class="nav-link colorF" href="LogoutServlet">Cerrar Sesión</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -54,8 +54,6 @@
             <thead style="background-color: #4A90E2; color: white;">
             <tr>
                 <th>GRUPO</th>
-                <th>LETRA</th>
-                <th>FOLIO ASPIRANTE</th>
                 <th>NOMBRE</th>
                 <th>APELLIDOS</th>
                 <th>CORREO</th>
@@ -71,8 +69,6 @@
                     for (GrupoAspirante g : lista) {%>
             <tr>
                 <td><%=g.getId_grupo()%></td>
-                <td><%=g.getLetra()%></td>
-                <td><%=g.getId_aspirante()%></td>
                 <td><%=g.getNombreA()%></td>
                 <td><%=g.getApellidosA()%></td>
                 <td><%=g.getCorreoA()%></td>

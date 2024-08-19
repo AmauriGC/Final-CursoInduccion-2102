@@ -1,4 +1,7 @@
 <%@ page import="utez.edu.mx.sisgacicursodeinduccion.model.Grupo" %>
+<%@ page import="utez.edu.mx.sisgacicursodeinduccion.model.Usuario" %>
+<%@ page import="utez.edu.mx.sisgacicursodeinduccion.dao.UsuarioDao" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -131,10 +134,26 @@
                                                placeholder="Letra del Grupo" disabled/>
                                     </div>
 
+                                    <%
+                                        // Obtén la lista de usuarios
+                                        UsuarioDao usuarioDao = new UsuarioDao();
+                                        ArrayList<Usuario> lista = usuarioDao.getAll();
+                                    %>
+
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="email" name="correo" class="form-control"
-                                               value="<%=g != null ? g.getCorreo() : "" %>"
-                                               placeholder="Correo" />
+                                        <label for="correo">Correo</label>
+                                        <select name="correo" id="correo" class="form-control">
+                                            <option value="">Selecciona un correo</option>
+                                            <%
+                                                for (Usuario u : lista) {
+                                                    String correo = u.getCorreo();
+                                                    boolean isSelected = (g != null && g.getCorreo() != null && g.getCorreo().equals(correo));
+                                            %>
+                                            <option value="<%= correo %>" <%= isSelected ? "selected" : "" %>><%= correo %></option>
+                                            <%
+                                                }
+                                            %>
+                                        </select>
                                     </div>
 
                                     <!-- Mostrar Mensajes de Error -->

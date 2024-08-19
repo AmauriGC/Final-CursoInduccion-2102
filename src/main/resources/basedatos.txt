@@ -1,8 +1,6 @@
-SHOW DATABASES;
+CREATE DATABASE sisgaci;
 
-CREATE DATABASE curso_induccion;
-
-USE curso_induccion;
+USE sisgaci;
 
 CREATE TABLE ROL (
     id_rol INT(1) PRIMARY KEY,
@@ -89,18 +87,17 @@ INSERT INTO GRUPOS (id_grupo, letra, nombre, correo, cantidad) VALUES
 
 CREATE TABLE GRUPO_ASPIRANTE (
     id_grupo INT(2),
-    letra VARCHAR(5),
     nombreA VARCHAR(255),
     apellidosA VARCHAR(255),
     correoA VARCHAR(255),
     FOREIGN KEY (id_grupo) REFERENCES GRUPOS(id_grupo) ON DELETE CASCADE
 );
-INSERT INTO GRUPO_ASPIRANTE (id_grupo, letra, nombreA, apellidosA, correoA) VALUES
-(1, "A", "eli", "trujillo", "eli@gmail.com"),
-(2, "B", "pao", "trujillo", "pao@gmail.com"),
-(2, "B", "juana", "fuentes", "juana@gmail.com"),
-(3, "C", "luis", "hernandez", "luis@gmail.com"),
-(3, "C", "maria", "lopez", "maria@gmail.com");
+INSERT INTO GRUPO_ASPIRANTE (id_grupo, nombreA, apellidosA, correoA) VALUES
+(1, "eli", "trujillo", "eli@gmail.com"),
+(2, "pao", "trujillo", "pao@gmail.com"),
+(2, "juana", "fuentes", "juana@gmail.com"),
+(3, "luis", "hernandez", "luis@gmail.com"),
+(3, "maria", "lopez", "maria@gmail.com");
 
 CREATE TABLE CALIFICACIONES (
     id_calificacion INT(2) PRIMARY KEY AUTO_INCREMENT,
@@ -128,6 +125,18 @@ INSERT INTO CALIFICACIONES (id_materia, nombreM, id_grupo, letra, id_usuario, no
 
 SHOW TABLES;
 
+DELIMITER $$
+CREATE TRIGGER actualiza_cantidad
+AFTER INSERT ON GRUPO_ASPIRANTE
+FOR EACH ROW
+BEGIN
+    UPDATE GRUPOS
+    SET cantidad = cantidad + 1
+    WHERE id_grupo = NEW.id_grupo;
+END $$
+DELIMITER ;
+
+
 SELECT * FROM MATERIAS;
 SELECT * FROM ASPIRANTES;
 SELECT * FROM ROL;
@@ -136,3 +145,5 @@ SELECT * FROM MATERIAS_USUARIOS;
 SELECT * FROM GRUPOS;
 SELECT * FROM GRUPO_ASPIRANTE;
 SELECT * FROM CALIFICACIONES;
+
+drop database sisgaci;

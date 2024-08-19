@@ -51,7 +51,6 @@
         </div>
     </nav>
 </header>
-
 <body style="font-family: 'Montserrat', sans-serif">
 <div class="tabla p-md-5 mx-md-4">
     <a href="administrador.jsp" class="btn btn-outline-danger salir">Salir</a>

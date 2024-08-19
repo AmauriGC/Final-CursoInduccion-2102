@@ -43,12 +43,12 @@
                     </div>
                 </li>
             </ul>
-            <a class="nav-link colorF" href="LogoutServlet">Cerrar Sesión</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
-<div class="tabla p-md-5 mx-md-4">
-    <a href="docente.jsp" class="btn btn-outline-danger salir">Salir</a>
+<div class="p-md-5 mx-md-4 tabla">
+    <a href="docente.jsp" class="btn btn-outline-danger">Salir</a>
     <div class="table-container">
         <table id="example" class="table table-striped table-hover" style="width:100%">
             <thead style="background-color: #4A90E2; color: white;">

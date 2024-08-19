@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/gestion_tabla.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/datatables.css">
 </head>
-<body>
+<body style="font-family: 'Montserrat', sans-serif">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-brown">
@@ -47,7 +47,7 @@
         </div>
     </nav>
 </header>
-<div class="card-body p-md-5 mx-md-4 tabla">
+<div class="p-md-5 mx-md-4 tabla">
     <a href="docente.jsp" class="btn btn-outline-danger">Salir</a>
     <div class="table-container">
         <table id="example" class="table table-striped table-hover" style="width:100%">

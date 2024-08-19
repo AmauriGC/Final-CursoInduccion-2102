@@ -1,4 +1,7 @@
 <%@ page import="utez.edu.mx.sisgacicursodeinduccion.model.Aspirante" %>
+<%@ page import="utez.edu.mx.sisgacicursodeinduccion.dao.GrupoDao" %>
+<%@ page import="utez.edu.mx.sisgacicursodeinduccion.model.Grupo" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,11 +19,19 @@
             var telefono = form["telefono"] ? form["telefono"].value : "";
             var curp = form["curp"] ? form["curp"].value : "";
             var calificacion = form["calificacion"] ? form["calificacion"].value : "";
+            var id_grupo = form["id_grupo"] ? form["id_grupo"].value : "0";
             var operacion = form["operacion"].value;
 
             // Validar que todos los campos estén llenos
-            if ((operacion === "registrar" || operacion === "actualizar") && (nombre === "" || apellidos === "" || correo === "" || telefono === "" || curp === "")) {
+            if ((operacion === "registrar" || operacion === "actualizar") &&
+                (nombre === "" || apellidos === "" || correo === "" || telefono === "" || curp === "")) {
                 alert("Todos los campos deben ser llenados");
+                return false;
+            }
+
+            // Validar grupo seleccionado
+            if (operacion === "registrar" && id_grupo === "0") {
+                alert("Debes seleccionar un grupo válido.");
                 return false;
             }
 
@@ -66,7 +77,9 @@
             }
 
             // Validar calificación
-            if (operacion === "calificar" && (calificacion === "" || !/^\d+$/.test(calificacion)) || calificacion < 0 || calificacion > 10) {
+            if (operacion === "calificar" &&
+                (calificacion === "" || !/^\d+$/.test(calificacion)) ||
+                calificacion < 0 || calificacion > 10) {
                 alert("Calificación inválida. Debe ser un número entero entre 0 y 10.");
                 return false;
             }
@@ -74,6 +87,7 @@
             return true;
         }
     </script>
+
 
 </head>
 <body style="font-family: 'Montserrat', sans-serif">
@@ -177,6 +191,22 @@
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="text" name="curp" class="form-control" placeholder="CURP"/>
                                     </div>
+
+                                    <%
+                                        GrupoDao grupoDao = new GrupoDao();
+                                        ArrayList<Grupo> lista = grupoDao.getAllG();
+                                    %>
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <label for="grupo">Grupo</label>
+                                        <select name="id_grupo" id="grupo" class="form-control">
+                                            <option value="0">Selecciona un grupo</option>
+                                            <% for (Grupo g : lista) { %>
+                                            <option value="<%= g.getId_grupo() %>"><%= g.getLetra() %>
+                                            </option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <input type="hidden" name="operacion" value="registrar">
                                         <input type="submit" data-mdb-button-init data-mdb-ripple-init

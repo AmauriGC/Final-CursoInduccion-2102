@@ -6,8 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import utez.edu.mx.sisgacicursodeinduccion.dao.AsignarDao;
 import utez.edu.mx.sisgacicursodeinduccion.dao.AspiranteDao;
 import utez.edu.mx.sisgacicursodeinduccion.model.Aspirante;
+import utez.edu.mx.sisgacicursodeinduccion.model.GrupoAspirante;
 
 import java.io.IOException;
 
@@ -53,7 +55,19 @@ public class RegistrarAspiranteServlet extends HttpServlet {
                 String correo = req.getParameter("correo");
                 String telefonoStr = req.getParameter("telefono");
                 String curp = req.getParameter("curp");
+
+                String nombreA = req.getParameter("nombre");
+                String apellidosA = req.getParameter("apellidos");
+                String correoA = req.getParameter("correo");
+                int id_grupo = Integer.parseInt(req.getParameter("id_grupo"));
                 String ruta = "gestionAspirante.jsp";
+
+                // Validación: Verificar que el grupo seleccionado es válido
+                if (id_grupo == 0) {
+                    sesion.setAttribute("mensaje2", "Debes seleccionar un grupo válido.");
+                    resp.sendRedirect("registrarAspirante.jsp");
+                    return;
+                }
 
                 if (nombre == null || nombre.isEmpty() ||
                         apellidos == null || apellidos.isEmpty() ||
@@ -94,12 +108,21 @@ public class RegistrarAspiranteServlet extends HttpServlet {
                     return;
                 }
 
+                GrupoAspirante o = new GrupoAspirante();
+                o.setId_grupo(id_grupo);
+                o.setNombreA(nombreA);
+                o.setApellidosA(apellidosA);
+                o.setCorreoA(correoA);
+
                 Aspirante a = new Aspirante();
                 a.setNombre(nombre);
                 a.setApellidos(apellidos);
                 a.setCorreo(correo);
                 a.setTelefono(telefono);
                 a.setCurp(curp);
+
+                AsignarDao da = new AsignarDao();
+                boolean insertadoo = da.insertGrupo_A(o);
 
                 boolean insertado = dao.insertA(a);
 

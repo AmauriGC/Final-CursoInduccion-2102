@@ -1,6 +1,7 @@
 package utez.edu.mx.sisgacicursodeinduccion.dao;
 
 import utez.edu.mx.sisgacicursodeinduccion.model.Grupo;
+import utez.edu.mx.sisgacicursodeinduccion.model.Usuario;
 import utez.edu.mx.sisgacicursodeinduccion.utils.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -38,7 +39,7 @@ public class GrupoDao {
     // Obtener todos los grupos
     public ArrayList<Grupo> getAllG() {
         ArrayList<Grupo> lista = new ArrayList<>();
-        String query = "SELECT * FROM grupos";
+        String query = "SELECT * FROM grupos ";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
@@ -62,10 +63,11 @@ public class GrupoDao {
 
     // Guardar un nuevo grupo en la base de datos
     public boolean insertG(Grupo grupo) {
-        String query = "INSERT INTO grupos (letra, cantidad) VALUES (?, 0)";
+        String query = "INSERT INTO grupos (letra, correo, cantidad) VALUES (?, ?, 0)";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, grupo.getLetra());
+            ps.setString(2, grupo.getCorreo());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,12 +77,11 @@ public class GrupoDao {
 
     // Actualizar la información de un grupo
     public boolean updateG(Grupo g) {
-        String query = "update grupos set nombre = ?, correo = ? where id_grupo = ?";
+        String query = "UPDATE grupos SET correo = ? WHERE id_grupo = ?";
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, g.getNombre());
-            ps.setString(2, g.getCorreo());
-            ps.setInt(3, g.getId_grupo());
+            ps.setString(1, g.getCorreo());
+            ps.setInt(2, g.getId_grupo());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,4 +133,6 @@ public class GrupoDao {
         }
         return false;
     }
+
+
 }
