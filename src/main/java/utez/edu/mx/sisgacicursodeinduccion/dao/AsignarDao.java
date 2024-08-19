@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class AsignarDao {
 
     public boolean insertGrupo_A(GrupoAspirante o) {
-        String query = "INSERT INTO GRUPO_ASPIRANTE (id_grupo, nombreA, apellidosA, correoA) " + "VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO grupo_aspirante (id_grupo, nombreA, apellidosA, correoA) " + "VALUES (?, ?, ?, ?)";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
