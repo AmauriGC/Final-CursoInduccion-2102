@@ -116,7 +116,7 @@
                 </li>
             </ul>
 
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -143,7 +143,7 @@
                                     <h4 class="mt-1 mb-5 pb-1">
                                         <%= operacion.equals("registrar") ? "Registrar" : operacion.equals("actualizar") ? "Actualizar" : "" %>
                                     </h4>
-                                    <p><%= operacion.equals("registrar") ? "Registrar Aspirantes" : operacion.equals("actualizar") ? "Actualizar Aspirantes" : "" %>
+                                    <p><%= operacion.equals("registrar") ? "Docentes" : operacion.equals("actualizar") ? "Docentes" : "" %>
                                     </p>
                                 </div>
 
@@ -181,12 +181,12 @@
 
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="password" name="contra2" class="form-control"
-                                               placeholder="Contraseña"/>
+                                               placeholder="Confirmar Contraseña"/>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="tel" name="telefono" class="form-control"
-                                               placeholder="Telefono"/>
+                                               placeholder="Teléfono"/>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
@@ -228,7 +228,7 @@
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="tel" name="telefono" class="form-control"
                                                value="<%=u.getTelefono()%>"
-                                               placeholder="Telefono"/>
+                                               placeholder="Teléfono"/>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">

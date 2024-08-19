@@ -43,7 +43,7 @@
                     </div>
                 </li>
             </ul>
-            <a class="nav-link colorF" href="LogoutServlet">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="LogoutServlet">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -53,14 +53,14 @@
         <table id="example" class="table table-striped table-hover" style="width:100%">
             <thead>
             <tr>
-                <th>folio</th>
-                <th>nombre</th>
-                <th>apellidos</th>
-                <th>correo</th>
-                <th>telefono</th>
-                <th>curp</th>
-                <th>calificacion</th>
-                <th>calificar</th>
+                <th>FOLIO</th>
+                <th>NOMBRE</th>
+                <th>APELLIDOS</th>
+                <th>CORREO</th>
+                <th>TELÉFONO</th>
+                <th>CURP</th>
+                <th>CALIFICACIÓN</th>
+                <th>ASIGNAR CALIFICACIÓN</th>
             </tr>
             </thead>
             <tbody>

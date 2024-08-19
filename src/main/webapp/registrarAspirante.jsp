@@ -114,7 +114,7 @@
                 </li>
             </ul>
 
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -144,7 +144,7 @@
                                     <h4 class="mt-1 mb-5 pb-1">
                                         <%= operacion.equals("registrar") ? "Registrar" : operacion.equals("actualizar") ? "Actualizar" : "Calificar" %>
                                     </h4>
-                                    <p><%= operacion.equals("registrar") ? "Registrar Aspirantes" : operacion.equals("actualizar") ? "Actualizar Aspirantes" : "Calificar Aspirantes" %>
+                                    <p><%= operacion.equals("registrar") ? "Aspirantes" : operacion.equals("actualizar") ? "Actualizar Aspirantes" : "Calificar Aspirantes" %>
                                     </p>
                                 </div>
 

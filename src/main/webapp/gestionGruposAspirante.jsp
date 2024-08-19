@@ -35,7 +35,7 @@
                     </div>
                 </li>
             </ul>
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -45,18 +45,12 @@
         <table id="example" class="table table-striped table-hover" style="width:100%">
             <thead style="background-color: #4A90E2; color: white;">
             <tr>
-                <th>id_grupo</th>
-                <th>letra</th>
-                <th>id_aspirante</th>
-                <th>nombreA</th>
-                <th>apellidosA</th>
-                <th>correoA</th>
-                <th>id_usuario</th>
-                <th>nombreU</th>
-                <th>apellidosU</th>
-                <th>correoU</th>
-                <th>id_materia</th>
-                <th>nombreM</th>
+                <th>GRUPO</th>
+                <th>LETRA</th>
+                <th>FOLIO ASPIRANTE</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>CORREO</th>
             </tr>
             </thead>
             <tbody>
@@ -75,12 +69,6 @@
                 <td><%= g.getNombreA() %></td>
                 <td><%= g.getApellidosA() %></td>
                 <td><%= g.getCorreoA() %></td>
-                <td><%= g.getId_usuario() %></td>
-                <td><%= g.getNombreU() %></td>
-                <td><%= g.getApellidosU() %></td>
-                <td><%= g.getCorreoU() %></td>
-                <td><%= g.getId_materia() %></td>
-                <td><%= g.getNombreM() %></td>
             </tr>
             <% }
             }

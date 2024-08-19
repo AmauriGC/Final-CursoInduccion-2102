@@ -11,6 +11,9 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = {
         "/docente.jsp",
+        "/gestionAspiranteDocente.jsp",
+        "/gestionGruposAspiranteDocente.jsp",
+        "/gestionGruposDocente.jsp",
 })
 
 public class filtroDocente implements Filter {

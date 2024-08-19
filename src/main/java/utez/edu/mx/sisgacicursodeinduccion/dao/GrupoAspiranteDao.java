@@ -27,12 +27,6 @@ public class GrupoAspiranteDao {
                     g.setNombreA(rs.getString("nombreA"));
                     g.setApellidosA(rs.getString("apellidosA"));
                     g.setCorreoA(rs.getString("correoA"));
-                    g.setId_usuario(rs.getInt("id_usuario"));
-                    g.setNombreU(rs.getString("nombreU"));
-                    g.setApellidosU(rs.getString("apellidosU"));
-                    g.setCorreoU(rs.getString("correoU"));
-                    g.setId_materia(rs.getInt("id_materia"));
-                    g.setNombreM(rs.getString("nombreM"));
                 }
                 con.close();
                 ps.close();
@@ -60,13 +54,6 @@ public class GrupoAspiranteDao {
                     g.setNombreA(rs.getString("nombreA"));
                     g.setApellidosA(rs.getString("apellidosA"));
                     g.setCorreoA(rs.getString("correoA"));
-                    g.setId_usuario(rs.getInt("id_usuario"));
-                    g.setNombreU(rs.getString("nombreU"));
-                    g.setApellidosU(rs.getString("apellidosU"));
-                    g.setCorreoU(rs.getString("correoU"));
-                    g.setId_materia(rs.getInt("id_materia"));
-                    g.setNombreM(rs.getString("nombreM"));
-
                     lista.add(g);
                 }
                 con.close();

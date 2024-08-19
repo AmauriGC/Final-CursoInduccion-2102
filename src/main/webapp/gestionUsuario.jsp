@@ -47,7 +47,7 @@
                 </li>
             </ul>
 
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -65,7 +65,7 @@
                 <th>NOMBRE</th>
                 <th>APELLIDOS</th>
                 <th>CORREO</th>
-                <th>TELEFONO</th>
+                <th>TELÉFONO</th>
                 <th>CURP</th>
                 <th>...</th>
             </tr>

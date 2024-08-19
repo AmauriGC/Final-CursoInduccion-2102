@@ -35,8 +35,8 @@
                             <div class="card-body p-md-5 mx-md-4">
                                 <div class="text-center">
                                     <img src="img/CursoInduccion.jpg" alt="logo"><br>
-                                    <h4 class="mt-1 mb-5 pb-1">CURSOS DE INDUCCION</h4>
-                                    <p>Iniciar Sesion</p>
+                                    <h4 class="mt-1 mb-5 pb-1">CURSOS DE INDUCCIÓN</h4>
+                                    <p>Iniciar Sesión</p>
                                 </div>
 
                                 <form id="loginForm" method="post" action="login"

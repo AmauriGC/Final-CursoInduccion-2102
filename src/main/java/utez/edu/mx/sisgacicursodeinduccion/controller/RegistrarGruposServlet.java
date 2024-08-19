@@ -57,7 +57,7 @@ public class RegistrarGruposServlet extends HttpServlet {
 
         // Validar letra
         if ("registrar".equals(operacion)) {
-            if (letra == null || letra.trim().isEmpty() || !letra.matches("^[A-Z0-9]+$")) {
+            if (letra == null || letra.trim().isEmpty() || !letra.matches("^[A-Z]+$")) {
                 sesion.setAttribute("mensaje", "La letra debe ser alfanumérica y en mayúscula.");
                 sesion.setAttribute("operacion", "registrar");
                 response.sendRedirect("registrarGrupos.jsp");

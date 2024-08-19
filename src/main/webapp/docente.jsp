@@ -31,7 +31,7 @@
                     </div>
                 </li>
             </ul>
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -49,7 +49,7 @@
                 <div class="pastel-blue contenedor">
                     <img class="" src="img/gestionarAspirante.png" alt="aspirante image" width="80" height="80">
                     <h2>Gestionar Aspirantes</h2>
-                    <p>En este apartado podran ver los detalles de los aspirantes registrados.</p>
+                    <p>En este apartado podrán ver los detalles de los aspirantes registrados.</p>
                     <p><a class="btn bg-color-blue" href="gestionAspiranteDocente.jsp" role="button">Entrar &raquo;</a>
                     </p>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="pastel-pink contenedor">
                     <img class="" src="img/gestionarGrupo.png" alt="grupos image" width="80" height="80">
                     <h2>Gestionar Grupos</h2>
-                    <p>En este apartado podran ver los grupos que existen en total.</p>
+                    <p>En este apartado podrán ver los grupos que existen en total.</p>
                     <p><a class="btn bg-color-blue" href="gestionGruposDocente.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div><!-- /.col-lg-4 -->
@@ -68,7 +68,7 @@
                 <div class="pastel-purple contenedor">
                     <img class="" src="img/calificarGrupo.png" alt="grupos image" width="80" height="80">
                     <h2>Descargar datos</h2>
-                    <p>En este apartado podran descargar los datos en formato pdf.</p>
+                    <p>En este apartado podrán descargar los datos en formato pdf.</p>
                     <p><a class="btn bg-color-blue" href="gestionDatos.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div><!-- /.col-lg-4 -->

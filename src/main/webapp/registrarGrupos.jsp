@@ -17,11 +17,13 @@
 
             // Validar letra (solo en registro)
             if (form["operacion"].value === "registrar") {
-                if (letra === "" || !/^[A-Z0-9]+$/.test(letra)) {
-                    alert("La letra debe ser alfanumérica y en mayúscula");
+                // Validar que no esté vacío y sea solo una letra
+                if (letra === "" || !/^[A-Z]$/.test(letra)) {
+                    alert("La letra debe ser una única letra en mayúscula.");
                     return false;
                 }
             }
+
             return true;
         }
     </script>
@@ -34,10 +36,34 @@
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <!-- ... (menú de navegación) ... -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle colorW bg-brown" href="#" id="navbarDropdownRegister"
+                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Registrar
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownRegister">
+                        <a class="dropdown-item colorN" href="registrarUsuario.jsp">Usuarios</a>
+                        <a class="dropdown-item colorN" href="registrarAspirante.jsp">Aspirantes</a>
+                        <a class="dropdown-item colorN" href="registrarGrupos.jsp">Grupos</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle colorW bg-brown" href="#" id="navbarDropdownManage" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestionar
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownManage">
+                        <a class="dropdown-item colorN" href="gestionUsuario.jsp">Usuarios</a>
+                        <a class="dropdown-item colorN" href="gestionAspirante.jsp">Aspirantes</a>
+                        <a class="dropdown-item colorN" href="gestionGrupos.jsp">Grupos</a>
+                    </div>
+                </li>
             </ul>
+
             <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>

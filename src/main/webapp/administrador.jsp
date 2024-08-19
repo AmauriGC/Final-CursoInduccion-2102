@@ -44,7 +44,7 @@
                 </li>
             </ul>
 
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -64,7 +64,7 @@
                 <div class="pastel-blue contenedor text-center">
                     <img class="" src="img/registrarUsuario.png" alt="usuario image" width="90" height="90">
                     <h2>Usuarios</h2>
-                    <p>En este apartado se daran de alta a los usuarios que podran acceder a la página del sistema.</p>
+                    <p>En este apartado se darán de alta a los usuarios que podran acceder a la página del sistema.</p>
                     <p><a class="btn bg-color-blue" href="registrarUsuario.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <div class="pastel-pink contenedor text-center">
                     <img class="" src="img/registrarAspirante.png" alt="aspirante image" width="90" height="90">
                     <h2>Aspirantes</h2>
-                    <p>En este apartado se daran de alta a los aspirantes que inician el curso de induccion.</p>
+                    <p>En este apartado se darán de alta a los aspirantes que inician el curso de induction.</p>
                     <p><a class="btn bg-color-blue" href="registrarAspirante.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                     <img class="" src="img/gestionarAspirante.png" alt="aspirante image" width="90"
                          height="90">
                     <h2>Aspirantes</h2>
-                    <p>En este apartado podran ver los detalles de los aspirantes dados de alta en el sistema.</p>
+                    <p>En este apartado podrán ver los detalles de los aspirantes dados de alta en el sistema.</p>
                     <p><a class="btn bg-color-blue" href="gestionAspirante.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                 <div class="pastel-orange contenedor text-center">
                     <img class="" src="img/gestionarGrupo.png" alt="grupos image" width="90" height="90">
                     <h2>Grupos</h2>
-                    <p>En este apartado podran ver a todos los grupos que existen en el curso de induccion.</p>
+                    <p>En este apartado podrán ver a todos los grupos que existen en el curso de induction.</p>
                     <p><a class="btn bg-color-blue" href="gestionGrupos.jsp" role="button">Entrar &raquo;</a></p>
                 </div>
             </div>

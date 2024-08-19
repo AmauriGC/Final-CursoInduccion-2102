@@ -47,7 +47,7 @@
                 </li>
             </ul>
 
-            <a class="nav-link colorF" href="index.jsp">Cerrar Sesion</a>
+            <a class="nav-link colorF" href="index.jsp">Cerrar Sesión</a>
         </div>
     </nav>
 </header>
@@ -61,11 +61,11 @@
         <table id="example" class="table table-striped table-hover" style="width:100%">
             <thead style="background-color: #4A90E2; color: white;">
             <tr>
-                <th>Grupo</th>
-                <th>Letra</th>
-                <th>Nombre del docente</th>
-                <th>Correo del Docente</th>
-                <th>Cantidad</th>
+                <th>GRUPO</th>
+                <th>LETRA</th>
+                <th>NOMBRE DEL DOCENTE</th>
+                <th>CORREO DEL DOCENTE</th>
+                <th>CANTIDAD</th>
                 <th>...</th>
             </tr>
             </thead>
